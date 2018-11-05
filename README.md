@@ -1,4 +1,4 @@
-# nk_croc
+# d3m_croc
 Character recognition and object classification system for images
 
 ## Quick Start
