@@ -18,10 +18,10 @@ class PostInstallCommand(install):
         install.run(self)
 
 
-setup(name='nk_croc',
+setup(name='d3m_croc',
       version='1.1.0',
       description='Character recognition and object classification system.',
-      packages=['nk_croc'],
+      packages=['d3m_croc'],
       install_requires=[
                         'tensorflow == 1.8.0',
                         'Keras == 2.1.6',
