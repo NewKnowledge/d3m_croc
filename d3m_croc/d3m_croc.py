@@ -188,7 +188,7 @@ class Croc():
 
 
 if __name__ == '__main__':
-    client = Croc()
+    client = Croc(weights_path)
     image_path = 'http://i0.kym-cdn.com/photos/images/facebook/001/253/011/0b1.jpg'
     result = client.predict(input_path=image_path)
     print(result)
