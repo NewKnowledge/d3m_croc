@@ -24,8 +24,7 @@ class Croc():
     def __init__(self, path_model):
         self.target_size = (299, 299)
         # self.model = InceptionV3(weights='imagenet')
-        self.model = model
-        model.load_model(path_model)
+        self.model = InceptionV3(weights=load_model(path_model))
         self.nlp = spacy.load('en_core_web_md')
         self.n_top_preds = 10
         self.isa_dict = isa_dict
