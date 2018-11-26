@@ -7,27 +7,28 @@ from json import dumps
 from PIL import Image, ImageFilter
 
 import requests
-import spacy
-from tesserocr import PyTessBaseAPI
+# import spacy
+# from tesserocr import PyTessBaseAPI
 import numpy as np
 import pandas as pd
 from keras.preprocessing import image
 from keras.applications.inception_v3 \
     import InceptionV3, decode_predictions, preprocess_input
 
-from d3m_croc.is_a import isa_dict
-from d3m_croc.id_mapping import id_mapping_dict
+from nk_croc.is_a import isa_dict
+from nk_croc.id_mapping import id_mapping_dict
 
+requests_session = requests.Session() if os.environ.get('USE_REQUESTS_SESSION') == "True" else requests
 
 class Croc():
 
     def __init__(self):
         self.target_size = (299, 299)
         self.model = InceptionV3(weights='imagenet')
-        self.nlp = spacy.load('en_core_web_md')
+        # self.nlp = spacy.load('en_core_web_md')
         self.n_top_preds = 10
-        self.isa_dict = isa_dict
-        self.id_mapping_dict = id_mapping_dict
+        # self.isa_dict = isa_dict
+        # self.id_mapping_dict = id_mapping_dict
 
     def load_image(self, img_path, prep_func=lambda x: x):
         ''' load image given path and convert to an array
@@ -40,7 +41,7 @@ class Croc():
         ''' load an image from a provided hyperlink
         '''
         # get image
-        response = requests.get(image_url)
+        response = requests_session.get(image_url)
         with Image.open(io.BytesIO(response.content)) as img:
             # fill transparency if needed
             if img.mode in ('RGBA', 'LA'):
@@ -171,19 +172,20 @@ class Croc():
         object_predictions = pd.DataFrame.from_records(
             object_predictions[0], columns=['id', 'label', 'confidence'])
 
-        object_trees = self.climb_hierarchy(objects=object_predictions['id'])
+        # object_trees = self.climb_hierarchy(objects=object_predictions['id'])
 
-        print('performing character recognition')
-        char_predictions = self.char_detect(filename)
+        # print('performing character recognition')
+        # char_predictions = self.char_detect(filename)
+
 
         if filename == 'target_img.jpg':
             os.remove('target_img.jpg')
 
         return dumps(dict(
             objects=object_predictions.to_dict(),
-            object_trees=object_trees,
-            text=char_predictions['text'],
-            tokens=char_predictions['tokens']))
+            object_trees='',
+            text='',
+            tokens=''))
 
 
 if __name__ == '__main__':

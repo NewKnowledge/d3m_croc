@@ -44,7 +44,7 @@ ENV LC_ALL=C.UTF-8 \
     LANG=C.UTF-8
 
 RUN pip3 install -e /app
-RUN pip3 install -r /app/http-wrapper/requirments.txt
+RUN pip3 install -r /app/http-wrapper/requirements.txt
 
 ENV FLASK_APP=/app/http-wrapper/app.py
 
