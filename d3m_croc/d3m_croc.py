@@ -22,9 +22,10 @@ requests_session = requests.Session() if os.environ.get('USE_REQUESTS_SESSION') 
 
 class Croc():
 
-    def __init__(self):
+    def __init__(self, weights_path):
         self.target_size = (299, 299)
-        self.model = InceptionV3(weights='imagenet')
+        # self.model = InceptionV3(weights='imagenet')
+        self.model = InceptionV3(weights=weights_path)
         # self.nlp = spacy.load('en_core_web_md')
         self.n_top_preds = 10
         # self.isa_dict = isa_dict
