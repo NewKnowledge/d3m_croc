@@ -7,8 +7,8 @@ from json import dumps
 from PIL import Image, ImageFilter
 
 import requests
-# import spacy
-# from tesserocr import PyTessBaseAPI
+import spacy
+from tesserocr import PyTessBaseAPI
 import numpy as np
 import pandas as pd
 from keras.preprocessing import image
@@ -22,14 +22,16 @@ requests_session = requests.Session() if os.environ.get('USE_REQUESTS_SESSION') 
 
 class Croc():
 
-    def __init__(self, weights_path):
+    def __init__(self, weights_path, isa_path, id_mapping_path):
         self.target_size = (299, 299)
         # self.model = InceptionV3(weights='imagenet')
         self.model = InceptionV3(weights=weights_path)
         # self.nlp = spacy.load('en_core_web_md')
         self.n_top_preds = 10
         # self.isa_dict = isa_dict
+        self.isa_dict = isa_path
         # self.id_mapping_dict = id_mapping_dict
+        self.id_mapping_dict = id_mapping_path
 
     def load_image(self, img_path, prep_func=lambda x: x):
         ''' load image given path and convert to an array
@@ -190,7 +192,10 @@ class Croc():
 
 
 if __name__ == '__main__':
-    client = Croc()
+    inception_v3_path = '/home/inception_v3_weights_tf_dim_ordering_tf_kernels.h5' # location of inception v3 weights path
+    isa_file_path = '/home/is_a.py' # location of file
+    id_mapping_file_path = '/home/id_mapping_py.py' # location of file
+    client = Croc(weights_path = inception_v3_path, isa_path = isa_file_path, id_mapping_path = id_mapping_file_path)
     image_path = 'http://i0.kym-cdn.com/photos/images/facebook/001/253/011/0b1.jpg'
     result = client.predict(input_path=image_path)
     print(result)
