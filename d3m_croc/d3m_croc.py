@@ -177,6 +177,7 @@ class Croc():
         # print('performing character recognition')
         # char_predictions = self.char_detect(filename)
 
+
         if filename == 'target_img.jpg':
             os.remove('target_img.jpg')
 
