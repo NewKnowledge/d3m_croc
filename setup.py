@@ -25,7 +25,7 @@ setup(name='d3m_croc',
       install_requires=[
                         'tensorflow == 1.8.0',
                         'Keras == 2.1.6',
-                        'pandas >= 0.22.0, <= 0.23.0',
+                        'pandas == 0.23.4',
                         'tesserocr == 2.3.1',
                         'spacy == 2.0.11',
                         'requests == 2.20.0',
