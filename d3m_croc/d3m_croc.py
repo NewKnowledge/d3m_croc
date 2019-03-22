@@ -190,12 +190,11 @@ class Croc():
 
 
 if __name__ == '__main__':
-    inception_v3_path = '/home/inception_v3_weights_tf_dim_ordering_tf_kernels.h5' # location of inception v3 weights path
-    isa_file_path = '/home/is_a.py' # location of file
-    id_mapping_file_path = '/home/id_mapping_py.py' # location of file
-    spacy_model = '/home/en_core_web_md-1.2.1.tar.gz' # location of spacy model 
-    client = Croc(weights_path = inception_v3_path, spacy_path = spacy_model,
-                  isa_path = isa_file_path, id_mapping_path = id_mapping_file_path)
-    image_path = 'http://i0.kym-cdn.com/photos/images/facebook/001/253/011/0b1.jpg'
+    inception_v3_path = '/home/ndhamani/inception_v3_weights_tf_dim_ordering_tf_kernels.h5' # location of inception v3 weights path
+    isa_file_path = '/home/ndhamani/is_a.py' # location of file
+    id_mapping_file_path = '/home/ndhamani/id_mapping_py.py' # location of file
+    spacy_model = '/home/ndhamani/en_core_web_md-1.2.1.tar.gz' # location of spacy model 
+    client = Croc(weights_path = inception_v3_path, spacy_path = spacy_model, isa_path = isa_file_path, id_mapping_path = id_mapping_file_path)
+    image_path = 'http://farm4.static.flickr.com/3175/2737866473_7958dc8760.jpg'
     result = client.predict(input_path=image_path)
     print(result)
