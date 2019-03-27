@@ -28,7 +28,7 @@ setup(name='d3m_croc',
                         'pandas == 0.23.4',
                         'tesserocr == 2.3.1',
                         'spacy >= 1.7.0, <= 2.1.0',
-                        'requests >= 2.18.4, <= 2.20.0',
+                        'requests == 2.20.0',
                         'numpy >= 1.15.4',
                         'Pillow >= 5.1.0'],
       cmdclass={
