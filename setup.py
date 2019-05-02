@@ -23,7 +23,7 @@ setup(name='d3m_croc',
       description='Character recognition and object classification system.',
       packages=['d3m_croc'],
       install_requires=[
-                        'tensorflow == 1.12.0',
+                        'tensorflow-gpu <= 1.12.0',
                         'Keras == 2.2.4',
                         'pandas == 0.23.4',
                         'tesserocr == 2.3.1',
